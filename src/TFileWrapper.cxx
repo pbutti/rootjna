@@ -1,4 +1,7 @@
 #include "TFile.h"
+#include "TObject.h"
+#include "TH1D.h"
+
 #include "TSystem.h"
 
 extern "C" {
@@ -27,5 +30,18 @@ extern "C" {
     if (self)
       delete self;
   }
+
+  //void TFile_Get(TFile* self, const char* name) {
+  //  
+  //  TObject* o = (TObject*)self->Get(name);
+  //
+  //  return o; 
+  //}
+
+  TH1D* TFile_Get1DHisto(TFile* self, const char* name) {
+    TH1D* h = (TH1D*) self->Get(name);
+    return h;
+  }
+  
   
 }
