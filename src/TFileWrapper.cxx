@@ -3,12 +3,15 @@
 
 extern "C" {
   
-  //  TFile* TFileCtor(const char* fname, const char* option) {
-  int64_t TFileCtor() {
+  TFile* TFileCtor(const char* fname, const char* option) {
     //std::cout<<"Trying to load file:"<<fname<<" with option "<<option<<std::endl;
+
+    //This is necessary in order to reset the signals that root sends to jvm and cause it to crash.
     gSystem->ResetSignals();
-    TFile *tfile = new TFile("Example.root");
-    return (int64_t)tfile;
+
+    
+    TFile *tfile = new TFile(fname,option);
+    return tfile;
   }
 
 
@@ -19,8 +22,7 @@ extern "C" {
   void TFile_ls(TFile* self) {
     self->ls();
   }
-
-
+  
   void TFile_delete(TFile* self) {
     if (self)
       delete self;
