@@ -11,7 +11,7 @@ file(GLOB SRC_FILES CONFIGURE_DEPENDS
 add_library(rootjna SHARED ${SRC_FILES})
 target_include_directories(rootjna
   INTERFACE ./include ${ROOT_INCLUDE_DIRS})
-target_link_libraries(rootjna PUBLIC ROOT::Core ROOT::RIO)
+target_link_libraries(rootjna PUBLIC ROOT::Core ROOT::RIO ROOT::Hist)
 
 #add_library(SHARED ${PROJECT_NAME} ${library_sources})
 #install(TARGETS ${PROJECT_NAME} DESTINATION lib)
