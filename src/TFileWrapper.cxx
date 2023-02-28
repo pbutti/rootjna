@@ -1,6 +1,7 @@
 #include "TFile.h"
 #include "TObject.h"
 #include "TH1D.h"
+#include "TH2D.h"
 
 #include "TSystem.h"
 
@@ -40,6 +41,11 @@ extern "C" {
 
   TH1D* TFile_Get1DHisto(TFile* self, const char* name) {
     TH1D* h = (TH1D*) self->Get(name);
+    return h;
+  }
+
+  TH2D* TFile_Get2DHisto(TFile* self, const char* name) {
+    TH2D* h = (TH2D*) self->Get(name);
     return h;
   }
   
